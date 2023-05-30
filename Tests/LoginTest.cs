@@ -1,4 +1,6 @@
-﻿using SauceDemo.Pages;
+﻿using Allure.Commons;
+using NUnit.Allure.Attributes;
+using SauceDemo.Pages;
 using SauceDemo.Steps;
 using SauceDemo.Utilities.Configuration;
 using System;
@@ -11,7 +13,14 @@ namespace SauceDemo.Tests
 {
     public class LoginTest : BaseTest
     {
-        [Test]
+        [Test(Description = "Successful Login")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureOwner("Standard_user")]
+        [AllureSuite("Passed_suite")]
+        [AllureSubSuite("GUI")]
+        [AllureIssue("testIssue")]
+        [AllureTms("TMS-157_testIssue")]
+        [AllureTag("regression")]
 
         public void SuccessfulLoginTest()
         {
@@ -21,7 +30,10 @@ namespace SauceDemo.Tests
             Assert.IsTrue(NavigationSteps.ProductsPage.IsPageOpened());
         }
 
-        [Test]
+        [Test(Description = "Login Failed")]
+        [Description ("Login failed - user locked out")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureOwner("Locked_out_user")]
         public void LockedTest()
         {
             NavigationSteps.NavigateToLoginPage();

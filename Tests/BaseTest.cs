@@ -1,4 +1,6 @@
-﻿using NUnit.Allure.Core;
+﻿using Allure.Commons;
+using NUnit.Allure.Core;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using SauceDemo.Core;
 using SauceDemo.Steps;
@@ -10,6 +12,7 @@ namespace SauceDemo.Tests
     {
         protected IWebDriver Driver;
         protected NavigationSteps NavigationSteps;
+        private AllureLifecycle allure;
 
         [SetUp]
         public void SetUp()
@@ -17,11 +20,20 @@ namespace SauceDemo.Tests
             Driver = new Browser().Driver;
 
             NavigationSteps = new NavigationSteps(Driver);
+            allure = AllureLifecycle.Instance;
         }
 
         [TearDown]
         public void TearDown()
         {
+            if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
+            {
+                Screenshot screenshot = ((ITakesScreenshot)Driver).GetScreenshot();
+                byte[] screenshotBytes = screenshot.AsByteArray;
+
+                allure.AddAttachment("Screenshot", "image/png", screenshotBytes);
+            }
+
             Driver.Quit();
         }
     }

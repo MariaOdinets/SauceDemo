@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Allure.Attributes;
+using OpenQA.Selenium;
 using SauceDemo.Models;
 using SauceDemo.Pages;
 
@@ -11,6 +12,7 @@ namespace SauceDemo.Steps
 
         }
 
+        [AllureStep("Navigate to Login Page")]
         public LoginPage NavigateToLoginPage()
         {
             return new LoginPage(Driver);
