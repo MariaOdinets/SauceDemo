@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<structure>
+<age type ="integer">17</age>
+<firstName>Mary</firstName>
+<isActive>true</isActive>
+	</structure>
+
+  

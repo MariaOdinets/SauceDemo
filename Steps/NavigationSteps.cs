@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NLog;
+using OpenQA.Selenium;
 using SauceDemo.Models;
 using SauceDemo.Pages;
 
@@ -6,6 +7,7 @@ namespace SauceDemo.Steps
 {
     public class NavigationSteps : BaseStep
     {
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         public NavigationSteps(IWebDriver driver) : base(driver)
         {
 
@@ -19,6 +21,7 @@ namespace SauceDemo.Steps
         public ProductsPage SuccessfulLogin(string username, string password)
         {
             Login(username, password);
+            logger.Info("Navigated to Products page");
             return ProductsPage;
         }
 

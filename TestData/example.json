@@ -1,0 +1,18 @@
+{
+  "age": 15,
+  "firstName": "Mary",
+  "isActive": true,
+  "object": null,
+  "user": {
+    "lastName": "Last",
+    "department": "HR"
+  },
+  "array": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    }
+  ]
+}

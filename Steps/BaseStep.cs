@@ -11,8 +11,30 @@ namespace SauceDemo.Steps
     public class BaseStep
     {
         protected IWebDriver Driver;
-        public LoginPage LoginPage => new LoginPage(Driver);
-        public ProductsPage ProductsPage => new ProductsPage(Driver);
+
+        public LoginPage loginPage;
+        public LoginPage LoginPage
+        {
+            get
+            {
+                if (this.loginPage == null)
+                    this.loginPage = new LoginPage(Driver);
+
+                return this.loginPage;
+            }
+        }
+
+        public ProductsPage productsPage;
+        public ProductsPage ProductsPage
+        {
+            get
+            {
+                if (this.productsPage == null)
+                    this.productsPage = new ProductsPage(Driver);
+
+                return this.productsPage;
+            }
+        }
 
         public BaseStep(IWebDriver driver)
         {
