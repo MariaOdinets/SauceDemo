@@ -6,7 +6,7 @@ using SauceDemo.Core;
 using SauceDemo.Steps;
 using Logger = NLog.Logger;
 
-namespace SauceDemo.Tests
+namespace SauceDemo.Tests.GUI
 {
     [AllureNUnit]
     public class BaseTest
