@@ -27,15 +27,15 @@ namespace SauceDemo.Steps
             return SuccessfulLogin(user.Username, user.Password);
         }
 
-        public LoginPage IncorrectLogin(string username, string password)
+        public LoginPage LockedLogin(string username, string password)
         {
             Login(username, password);
             return LoginPage;
         }
 
-        public LoginPage IncorrectLogin(User user)
+        public LoginPage LockedLogin(User user)
         {
-            return IncorrectLogin(user.Username, user.Password);
+            return LockedLogin(user.Username, user.Password);
         }
 
         private void Login(string username, string password)
@@ -45,6 +45,7 @@ namespace SauceDemo.Steps
             LoginPage.EnterPassword(password);
             Thread.Sleep(3000);
             LoginPage.ClickLogin();
+            Thread.Sleep(3000);
         }
     }
 }

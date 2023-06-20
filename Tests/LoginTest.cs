@@ -22,12 +22,12 @@ namespace SauceDemo.Tests
         }
 
         [Test]
-        public void LockedTest()
+        public void IncorrectLogin()
         {
             NavigationSteps.NavigateToLoginPage();
-            NavigationSteps.IncorrectLogin(Configurator.UserByUsername("locked_out_user"));
+            NavigationSteps.LockedLogin(Configurator.UserByUsername("locked_out_user"));
 
-            Assert.IsTrue(NavigationSteps.LoginPage.IsErrorMessageDisplayed());
+            Assert.IsTrue(NavigationSteps.LoginPage.IsErrorButtonDisplayed());
         }
     }
 }

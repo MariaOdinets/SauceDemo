@@ -13,7 +13,7 @@ namespace SauceDemo.Pages
         private static readonly By UsernameInput = By.Id("user-name");
         private static readonly By PasswordInput = By.Id("password");
         private static readonly By LoginButton = By.Id("login-button");
-        public static readonly By ErrorMessage = By.CssSelector(".error - button");
+        public static readonly By ErrorButton = By.CssSelector(".error-button");
 
         public LoginPage(IWebDriver driver) : base(driver)
         {
@@ -40,9 +40,9 @@ namespace SauceDemo.Pages
             Driver.FindElement(LoginButton).Click();
         }
 
-        public bool IsErrorMessageDisplayed()
+        public bool IsErrorButtonDisplayed()
         {
-            return Driver.FindElement(ErrorMessage).Displayed;
+            return Driver.FindElement(ErrorButton).Displayed;
         }
     }
 }
