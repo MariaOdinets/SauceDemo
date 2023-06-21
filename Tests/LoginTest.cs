@@ -15,8 +15,8 @@ namespace SauceDemo.Tests
 
         public void SuccessfulLoginTest()
         {
-            LoginPage loginPage = new LoginPage(Driver);
-                loginPage.SuccessfulLogin(Configurator.UserByUsername("standard_user"));
+            new LoginPage(Driver)
+                .SuccessfulLogin(Configurator.UserByUsername("standard_user"));
 
             Assert.IsTrue(NavigationSteps.ProductsPage.IsPageOpened());
         }
