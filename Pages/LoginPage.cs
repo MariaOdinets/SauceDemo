@@ -16,7 +16,6 @@ namespace SauceDemo.Pages
         private static readonly By LoginButton = By.Id("login-button");
         public static readonly By ErrorButton = By.CssSelector(".error-button");
 
-        private LoginPage loginPage;
         private ProductsPage productsPage;
         public LoginPage(IWebDriver driver) : base(driver)
         {
@@ -31,19 +30,19 @@ namespace SauceDemo.Pages
         public LoginPage EnterUsername(string username)
         {
             Driver.FindElement(UsernameInput).SendKeys(username);
-            return loginPage;
+            return this;
         }
 
         public LoginPage EnterPassword(string password) 
         { 
             Driver.FindElement(PasswordInput).SendKeys(password);
-            return loginPage;
+            return this;
         }
 
         public LoginPage ClickLogin()
         {
             Driver.FindElement(LoginButton).Click();
-            return loginPage;
+            return this;
         }
 
         public bool IsErrorButtonDisplayed()
@@ -53,12 +52,30 @@ namespace SauceDemo.Pages
 
         internal ProductsPage SuccessfulLogin(string username, string password)
         {
+            Login(username, password);
             return productsPage;
+        }
+
+        public ProductsPage SuccessfulLogin(User user)
+        {
+            return SuccessfulLogin(user.Username, user.Password);
         }
 
         internal LoginPage LockedLogin(string username, string password)
         {
-            return loginPage;
+            Login(username, password);
+            return this;
+        }
+        internal LoginPage LockedLogin(User user)
+        {
+            return LockedLogin(user.Username, user.Password);
+        }
+
+        private void Login(string username, string password)
+        {
+            EnterUsername(username);
+            EnterPassword(password);
+            ClickLogin();
         }
     }
 }

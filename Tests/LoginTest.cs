@@ -15,9 +15,8 @@ namespace SauceDemo.Tests
 
         public void SuccessfulLoginTest()
         {
-            NavigationSteps
-                .NavigateToLoginPage()
-                .SuccessfulLogin(Configurator.UserByUsername("standard_user"));
+            LoginPage loginPage = new LoginPage(Driver);
+                loginPage.SuccessfulLogin(Configurator.UserByUsername("standard_user"));
 
             Assert.IsTrue(NavigationSteps.ProductsPage.IsPageOpened());
         }
@@ -25,11 +24,10 @@ namespace SauceDemo.Tests
         [Test]
         public void LockedUserLoginTest()
         {
-            NavigationSteps
-                .NavigateToLoginPage()
-                .LockedLogin(Configurator.UserByUsername("locked_out_user"));
+            LoginPage loginPage = new LoginPage(Driver)
+                 .LockedLogin(Configurator.UserByUsername("locked_out_user"));
 
-            Assert.IsTrue(NavigationSteps.LoginPage.IsErrorButtonDisplayed());
+            Assert.IsTrue(loginPage.IsErrorButtonDisplayed());
         }
     }
 }
