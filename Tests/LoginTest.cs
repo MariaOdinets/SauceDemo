@@ -15,17 +15,19 @@ namespace SauceDemo.Tests
 
         public void SuccessfulLoginTest()
         {
-            NavigationSteps.NavigateToLoginPage();
-            NavigationSteps.SuccessfulLogin(Configurator.UserByUsername("standard_user"));
+            NavigationSteps
+                .NavigateToLoginPage()
+                .SuccessfulLogin(Configurator.UserByUsername("standard_user"));
 
             Assert.IsTrue(NavigationSteps.ProductsPage.IsPageOpened());
         }
 
         [Test]
-        public void IncorrectLogin()
+        public void LockedUserLoginTest()
         {
-            NavigationSteps.NavigateToLoginPage();
-            NavigationSteps.LockedLogin(Configurator.UserByUsername("locked_out_user"));
+            NavigationSteps
+                .NavigateToLoginPage()
+                .LockedLogin(Configurator.UserByUsername("locked_out_user"));
 
             Assert.IsTrue(NavigationSteps.LoginPage.IsErrorButtonDisplayed());
         }
