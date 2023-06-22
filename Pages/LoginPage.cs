@@ -22,7 +22,15 @@ namespace SauceDemo.Pages
 
         public override bool IsPageOpened()
         {
-            return Driver.FindElement(LoginButton).Displayed;
+            try
+            {
+                return Driver.FindElement(LoginButton).Displayed;
+            }
+
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
         public void EnterUsername(string username)
@@ -43,6 +51,11 @@ namespace SauceDemo.Pages
         public bool IsErrorButtonDisplayed()
         {
             return Driver.FindElement(ErrorButton).Displayed;
+        }
+
+        public override void OpenPage()
+        {
+            Driver.Navigate().GoToUrl(Configurator.AppSettings.URL);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using SauceDemo.Utilities.Configuration;
 
 namespace SauceDemo.Pages
 {
@@ -12,7 +13,20 @@ namespace SauceDemo.Pages
 
         public override bool IsPageOpened()
         {
-            return Driver.FindElement(AddToCartButton).Displayed;
+            try
+            {
+                return Driver.FindElement(AddToCartButton).Displayed;
+            }  
+            
+            catch (Exception e)
+            { 
+                return false;
+            }
+        }
+
+        public override void OpenPage()
+        {
+            Driver.Navigate().GoToUrl(Configurator.AppSettings.URL);
         }
     }
 }
