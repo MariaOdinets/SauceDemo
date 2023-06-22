@@ -22,6 +22,7 @@ namespace SauceDemo.Steps
             return ProductsPage;
         }
 
+        // as an example of Value Object pattern
         public ProductsPage SuccessfulLogin(User user)
         {
             return SuccessfulLogin(user.Username, user.Password);
