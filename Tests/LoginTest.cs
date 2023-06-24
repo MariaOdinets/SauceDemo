@@ -1,4 +1,5 @@
-﻿using SauceDemo.Pages;
+﻿using SauceDemo.Models;
+using SauceDemo.Pages;
 using SauceDemo.Steps;
 using SauceDemo.Utilities.Configuration;
 using System;
@@ -16,7 +17,7 @@ namespace SauceDemo.Tests
         public void SuccessfulLoginTest()
         {
             NavigationSteps.NavigateToLoginPage();
-            NavigationSteps.SuccessfulLogin(Configurator.UserByUsername("standard_user"));
+            NavigationSteps.SuccessfulLogin(UserBuilder.StandartUser);
 
             Assert.IsTrue(NavigationSteps.ProductsPage.IsPageOpened());
         }
@@ -25,7 +26,7 @@ namespace SauceDemo.Tests
         public void IncorrectLogin()
         {
             NavigationSteps.NavigateToLoginPage();
-            NavigationSteps.LockedLogin(Configurator.UserByUsername("locked_out_user"));
+            NavigationSteps.LockedLogin(UserBuilder.LockedOutUser);
 
             Assert.IsTrue(NavigationSteps.LoginPage.IsErrorButtonDisplayed());
         }

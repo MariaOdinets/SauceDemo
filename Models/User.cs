@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace SauceDemo.Models
 {
-    public record User
+    public class User
     {
+        public string? Username { get; set; }
+        public string? Password { get; set; }
         public string? UserType { get; set; }
-        public string? Username { get; set; } 
-        public string? Password { get; set; } 
     }
 }

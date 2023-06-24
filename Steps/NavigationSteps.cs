@@ -41,11 +41,8 @@ namespace SauceDemo.Steps
         private void Login(string username, string password)
         {
             LoginPage.EnterUsername(username);
-            Thread.Sleep(3000);
             LoginPage.EnterPassword(password);
-            Thread.Sleep(3000);
             LoginPage.ClickLogin();
-            Thread.Sleep(3000);
         }
     }
 }

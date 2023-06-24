@@ -56,6 +56,6 @@ namespace SauceDemo.Utilities.Configuration
                 return users;
             }
         }
-        public static User? UserByUsername(string username) => Users.Find(x => x?.Username == username);
+        public static User? GetUserByUsername(string username) => Users.Find(x => x?.Username == username);
     }
 }
